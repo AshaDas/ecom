@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>E-commerce Website</title>
+    <title>Prodcut Cart</title>
 
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/skeleton.css">
@@ -12,25 +12,32 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <div id="product-list-page" class="container">
-        <!-- title and shopping cart -->
+    <div id="product-cart-page" class="container">
         <div class="row">
             <div class="ten columns">
-                <h2 style="margin-top: 20px;">Hello E-Commerce</h2>
+                <h2 style="margin-top: 20px;">Product Cart</h2>
             </div>
-            <a href="product_cart.html" class="two columns cart-icon">
-                <i class="material-icons" style="margin-top: 35px;">shopping_cart</i>
-                <span id="shoppingCartNumber">{{ cartCount }}</span>
-            </a>
         </div>
 
-        <!-- products -->
-        <div class="row eachProductItem">
-            <div v-for="product in productList">
+        <div v-for="product in productCart" class="row">
+            <div class="two columns">
+                    <img class="product-image-cart" :src="`images/${product.photo}`" />
+            </div>
+            <div class="eight columns">
                 <h5>{{ product.name }}</h5>
-                <img class="product-image" :src="`images/${product.photo}`" />
+            </div>
+            <div class="two columns">
                 <h6>{{ product.price }} Taka</h6>
-                <button v-on:click="addToCart(product)">Add to Cart</button>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="ten columns">
+                <h5>Total: {{ totalPrice }} Taka</h5>
+            </div>
+            <div class="two columns">
+                <button v-on:click="buy()">Buy</button>
             </div>
         </div>
     </div>
@@ -41,5 +48,5 @@
   integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
   crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="scripts/main.js"></script>
+<script src="scripts/cart.js"></script>
 </html>
