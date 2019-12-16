@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Address</title>
+
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/skeleton.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <div id="address-page" class="container">
+        <div class="row">
+            <h2>Provide your address</h2>
+        </div>
+
+        <div class="row">
+            <div class="six columns">
+                <label>Your Name</label>
+                <input v-model="name" class="u-full-width" type="text" placeholder="Asha Das">
+            </div>
+            <div class="six columns">
+                <label>Your Address</label>
+                <input v-model="address" class="u-full-width" type="text" placeholder="221B Baker Street, London, United Kingdom">
+            </div>
+        </div>
+
+        <button v-on:click="saveOrderToBackend()">Place Order</button>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="scripts/order.js"></script>
+
+</html>
