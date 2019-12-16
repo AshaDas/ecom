@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prodcut Cart</title>
+
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/skeleton.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div id="product-cart-page" class="container">
+        <div class="row">
+            <div class="ten columns">
+                <h2 style="margin-top: 20px;">Product Cart</h2>
+            </div>
+        </div>
+
+        <div v-for="product in productCart" class="row">
+            <div class="two columns">
+                    <img class="product-image-cart" :src="`images/${product.photo}`" />
+            </div>
+            <div class="eight columns">
+                <h5>{{ product.name }}</h5>
+            </div>
+            <div class="two columns">
+                <h6>{{ product.price }} Taka</h6>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="ten columns">
+                <h5>Total: {{ totalPrice }} Taka</h5>
+            </div>
+            <div class="two columns">
+                <button v-on:click="buy()">Buy</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="scripts/cart.js"></script>
+</html>
