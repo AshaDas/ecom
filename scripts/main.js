@@ -1,44 +1,30 @@
-var productArray = [
-    {
-        name: 'iPhone X',
-        price: 120000,
-        photo: 'iphonex.jpg'
-    },
-    {
-        name: 'Pixel 4',
-        price: 80000,
-        photo: 'pixel4.jpg'
-    },
-    {
-        name: 'Samsung Galxy S10',
-        price: 110000,
-        photo: 'galaxys10.jpg'
-    },
-];
-
-// when our page is fully loaded
-$( document ).ready(function() {
-    // first check if we already have localStorage
-    var productCart = localStorage.getItem('productCart');
-    
-    // if there is no product cart, set an empty product cart
-    if (productCart === null) {
-        localStorage.setItem('productCart', '[]');
-    } else {
-        // otherwise, do nothing
-    }
-});
-
-
 var productListPage = new Vue({
     el: '#product-list-page',
     data: {
-        productList: productArray,
+        productList: [],
         cartCount: 0,
+    },
+    // when the page loads, this function is called automatically
+    async mounted() {
+        // first check if we already have localStorage
+        var productCart = localStorage.getItem('productCart');
+        
+        // if there is no product cart, set an empty product cart
+        if (productCart === null) {
+            localStorage.setItem('productCart', '[]');
+        } else {
+            // otherwise, do nothing
+        }
+
+        // get data from our backend, all products
+        var response = await axios.get('php/products.php');
+
+        // set the data to "productList" property
+        this.productList = response.data;
     },
     methods: {
         addToCart(product) {
-            // increase the product count
+            // increase the cart count
             this.cartCount = this.cartCount + 1;
             
             // fist, get the data from our localstorage

@@ -3,6 +3,7 @@ var productListPage = new Vue({
     data: {
         productCart: []
     },
+    // use this to perform any calculation and show value
     computed: {
         totalPrice() {
             var total = 0;
@@ -14,6 +15,7 @@ var productListPage = new Vue({
             return total;
         }
     },
+    // when the page loads, this function is called automatically
     mounted() {
         // get the data from our localstorage
         var productCart = localStorage.getItem('productCart');
